@@ -115,7 +115,22 @@ int main() {
 
 /////////////
 //Ex 7:
-
+#include <stdio.h>
+int main() {
+    int num, a = 0, b = 1, c;
+    printf("Qual o número do termo da sequência? ");
+    scanf("%d", &num);
+    
+    for(int i = 1 ; i < num ; i++){
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    
+    printf("O termo é %d.", b);
+    
+    return 0;
+}
 
 /////////////
 //Ex 8:
