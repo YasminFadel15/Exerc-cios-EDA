@@ -29,7 +29,35 @@ int main(){
 
 //////////
 //Ex 2:
-
+#include <stdio.h>
+int main() {
+    int n, i;
+    
+    printf("Digite o número de caracteres: \n");
+    scanf("%d", &n);
+    
+    int vet[n];
+    
+    for(i = 0 ; i < n ; i++){
+        printf("Digite o caractere: \n");
+        scanf("%d", &vet[i]);
+    }
+    
+    int prod = 1;
+    
+    for(i = 0 ; i < n ; i++){
+        prod *= vet[i];
+    }
+    
+    int v[n];
+    
+    for(i = 0 ; i < n ; i++){
+        v[i] = prod / vet[i];
+        printf("%d\n", v[i]);
+    }
+    
+    return 0;
+}
 
 ////////// 
 //Ex 3:
@@ -134,6 +162,26 @@ int main() {
 
 /////////////
 //Ex 8:
+#include <stdio.h>
+#define TAM 100
+
+int main() {
+    int n, i;
+    int vet[TAM];
+    
+    printf("Digite o número de caracteres: \n");
+    scanf("%d", &n);
+    
+    for(i = 0 ; i < n ; i++){
+        printf("Digite o caractere: \n");
+        scanf("%d", &vet[i]);
+    }
+    
+    for(i = n - 1 ; i <= 0 ; i--){
+        printf("%d", vet[i]);
+    }
+    return 0;
+}
 
 
 /////////////
