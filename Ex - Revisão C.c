@@ -30,33 +30,32 @@ int main(){
 //////////
 //Ex 2:
 #include <stdio.h>
+#include <stdlib.h>
+
 int main() {
-    int n, i;
-    
-    printf("Digite o número de caracteres: \n");
+    int n,k;
+
+    printf("Informe o tamanho do vetor: ");
     scanf("%d", &n);
-    
-    int vet[n];
-    
-    for(i = 0 ; i < n ; i++){
-        printf("Digite o caractere: \n");
-        scanf("%d", &vet[i]);
-    }
-    
-    int prod = 1;
-    
-    for(i = 0 ; i < n ; i++){
-        prod *= vet[i];
-    }
-    
+
     int v[n];
+    int r[n];
+
+    int mult = 1;
     
-    for(i = 0 ; i < n ; i++){
-        v[i] = prod / vet[i];
-        printf("%d\n", v[i]);
+    for (int i = 0; i < n; i++) {
+        printf("Informe o número %d do vetor: ", i + 1);
+        scanf("%d", &v[i]);
+        mult *= v[i];
     }
-    
-    return 0;
+
+    printf("[ ");
+    for (int i = 0; i < n; i++) {
+        r[i] = mult / v[i];
+
+        printf("%d ", r[i]);
+    }
+    printf("]\n");
 }
 
 ////////// 
@@ -121,7 +120,53 @@ return 0;
 
 /////////////
 //Ex 5:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+#define TAM_MAX 100
+
+void aplic_rle(char entrada[], char saida[]){
+    int tamanho = strlen(entrada);
+    int i, j = 0, cont = 1;
+    char atual = entrada[0];
+    
+    for(i = 0 ; i < tamanho ; i++){
+        if(entrada[i] == atual){
+            cont++;
+        } else {
+            saida[j++] = cont + '0';
+            saida[j++] = atual;
+            cont = 1;
+            atual = entrada[i];
+        }
+    }
+    
+    saida[j++] = cont + '0';
+    saida[j++] = atual;
+    saida[j] = '\0';
+}
+
+int main(){
+    char entrada[TAM_MAX];
+    char saida[TAM_MAX];
+    int n, i;
+    
+    printf("Digite o número de caracteres: \n");
+    scanf("%d", &n);
+    
+    for(i = 0 ; i < n ; i++){
+        printf("Digite o caractere: \n");
+        scanf(" %c", &entrada[i]);
+    }
+    
+    aplic_rle(entrada, saida);
+    
+    printf("Entrada original: %s\n", entrada);
+    printf("Saida: %s\n", saida);
+    
+    return 0;
+}
 
 /////////////
 //Ex 6:
@@ -167,26 +212,68 @@ int main() {
 
 int main() {
     int n, i;
-    int vet[TAM];
+    char vet[TAM];
     
     printf("Digite o número de caracteres: \n");
     scanf("%d", &n);
     
     for(i = 0 ; i < n ; i++){
         printf("Digite o caractere: \n");
-        scanf("%d", &vet[i]);
+        scanf(" %c", &vet[i]);
     }
     
-    for(i = n - 1 ; i <= 0 ; i--){
-        printf("%d", vet[i]);
+    printf("Cadeia de caracteres original: %s\n", vet);
+    printf("Cadeia de caracteres invertida: ");
+    
+    for(i = n - 1 ; i >= 0 ; i--){
+        printf("%c", vet[i]);
     }
+    printf("\n");
+    
     return 0;
 }
 
-
 /////////////
 //Ex 9:
+#include <stdio.h>
+#include <stdbool.h>
+#define TAM 100
 
+
+int main() {
+    int n, i;
+    char vet[TAM], r1[TAM], r2[TAM];
+    
+    printf("Digite o número de caracteres: \n");
+    scanf("%d", &n);
+    
+    for(i = 0 ; i < n ; i++){
+        printf("Digite o caractere: \n");
+        scanf(" %c", &vet[i]);
+        r1[i] = vet[i];
+    }
+    
+    for(i = n - 1 ; i >= 0 ; i--){
+        r2[i] = vet[i];
+    }
+    
+    int resultado;
+    
+    for(i = 0 ; i < n ; i++){
+        if(r1[i] != r2[i]){
+            resultado = 1;
+            break;
+        } else
+            resultado = 0;
+    }
+    
+    if(resultado == 0)
+        printf("Verdadeiro.");
+    else
+        printf("Falso.");
+    
+    return 0;
+}
 
 /////////////
 //Ex 10:
